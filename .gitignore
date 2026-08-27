@@ -5,6 +5,7 @@ image (*.png
 # 이력서·PDF 포트폴리오 — 전화번호 포함, 공개 저장소에 올리지 않음
 resume.html
 resume-*.html
+career-*.html
 portfolio-print.html
 *.pdf
 
