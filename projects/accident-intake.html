@@ -202,9 +202,50 @@
         </div>
       </section>
 
-      <!-- ============ 5. 리뷰 페이지 ============ -->
+      <!-- ============ 5. 어드민 ============ -->
       <section>
-        <h2><span class="num">05</span>거래처 리뷰 페이지 — 제출된 서류의 검토까지</h2>
+        <h2><span class="num">05</span>어드민 — 직원이 검토하고, 필요하면 대신 접수한다</h2>
+        <p>
+          고객 제출로 끝나지 않도록, 직원용 어드민을 함께 만들었습니다.
+          접수 건을 진행상태·거래처·계약유형(실비/턴키) 기준으로 관리하고,
+          건별로 <strong>최초 열람 · 제출 완료 · URL 만료 일시</strong>를 추적해
+          고객이 링크를 열었는지, 어디서 멈췄는지까지 보이게 했습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/accident-intake/admin-list.png" target="_blank">
+            <img src="../assets/accident-intake/admin-list.png" alt="징구 시스템 어드민 목록" loading="lazy" />
+          </a>
+          <figcaption>어드민 목록 — 진행상태·거래처·계약유형 기준 관리, 도입 후 545건 접수 (개인정보 블러 처리)</figcaption>
+        </figure>
+        <p>
+          상세 화면에서는 eKYC 결과를 <strong>신분증 진위여부 정보</strong>로 정리해 보여줍니다 —
+          검증 결과, 동일인물 여부(자동승인), 면허증 진위확인까지 한 줄에 배지로.
+          담당자는 제출된 서류를 같은 화면에서 확인하고 반려하거나 승인합니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/accident-intake/admin-detail.png" target="_blank">
+            <img src="../assets/accident-intake/admin-detail.png" alt="징구 시스템 어드민 상세 — 신분증 진위확인" loading="lazy" />
+          </a>
+          <figcaption>접수 상세 — 신분증 진위확인 결과와 제출 서류, 반려·서류 등록 액션 (개인정보 블러 처리)</figcaption>
+        </figure>
+        <h3>대리 등록 — 모바일이 어려운 고객을 위한 통로</h3>
+        <p>
+          링크를 보내도 모바일 조작이 익숙하지 않은 고령 고객은 여전히 전화로 접수를 원했습니다.
+          그래서 <strong>직원이 고객 대신 서류를 등록하는 기능</strong>을 어드민에 넣었습니다 —
+          서류 타입을 고르고, 동의 서명은 캔버스로 직접 받고, 파일 업로드도 지원합니다.
+          셀프서비스 시스템에도 사람이 개입할 통로를 남겨둬야 실무에서 돌아간다고 생각합니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/accident-intake/admin-doc-register.png" target="_blank">
+            <img src="../assets/accident-intake/admin-doc-register.png" alt="서류 대리 등록 모달 — 서명 캔버스" loading="lazy" />
+          </a>
+          <figcaption>서류 등록 모달 — 직원이 고객 대신 서류를 등록하고 서명을 받는 대리 접수</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 6. 리뷰 페이지 ============ -->
+      <section>
+        <h2><span class="num">06</span>거래처 리뷰 페이지 — 제출된 서류의 검토까지</h2>
         <p>
           고객이 제출을 완료하면 거래처 담당자에게 검토용 링크가 전달됩니다.
           링크는 <strong>비밀번호로 보호</strong>되고 <strong>조회 만료일</strong>이 있어 무기한 노출되지 않습니다.
@@ -229,7 +270,7 @@
 
       <!-- ============ 6. 운영 ============ -->
       <section>
-        <h2><span class="num">06</span>출시가 끝이 아니었다</h2>
+        <h2><span class="num">07</span>출시가 끝이 아니었다</h2>
         <p>
           오픈 이후에도 거래처 요구사항 변경과 유지보수가 계속됐습니다.
           위의 자동/수동 선택 화면 자체가 운영 중에 추가된 요구사항이고,
@@ -240,7 +281,7 @@
 
       <!-- ============ 7. 배운 것 ============ -->
       <section>
-        <h2><span class="num">07</span>배운 것</h2>
+        <h2><span class="num">08</span>배운 것</h2>
         <ul>
           <li><strong>외부 의존성은 반드시 실패한다.</strong> 연동을 붙이는 것보다, 실패했을 때의 경로를 설계하는 데 더 많은 고민이 필요하다.</li>
           <li><strong>요구사항을 수용하는 것과 휘둘리는 것은 다르다.</strong> 거래처 요구를 받아들이되, 플로우 전체가 일관되게 유지되도록 화면 구조를 다시 잡는 건 만드는 사람의 몫이다.</li>
