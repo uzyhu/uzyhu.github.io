@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사고접수 징구 시스템 | 우지후</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="../index.html">우지후</a>
+      <nav>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록</a>
+      <div class="eyebrow">Case Study</div>
+      <h1>사고접수 징구 시스템<br />차량 사고 서류 접수 모바일 웹</h1>
+      <p class="lede">
+        렌탈 차량에 사고가 나면, 거래처(캐피탈사)의 고객이 링크 하나로 동의·본인인증·서류 제출까지
+        끝내는 모바일 웹입니다. 프론트엔드가 저 혼자였기 때문에 기획, 디자인, 프로토타입, 개발을
+        모두 직접 했습니다.
+      </p>
+      <dl class="meta-grid">
+        <div><dt>역할</dt><dd>기획 · 디자인 · 프론트엔드 개발 (1인)</dd></div>
+        <div><dt>기간</dt><dd>2026.01 – 2026.02 이후 운영·유지보수</dd></div>
+        <div><dt>사용자</dt><dd>거래처의 고객 · 거래처 담당자</dd></div>
+        <div><dt>핵심 스택</dt><dd>React · TypeScript · Vite</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <article class="case">
+    <div class="wrap">
+
+      <!-- ============ 1. 문제 ============ -->
+      <section>
+        <h2><span class="num">01</span>문제 — 사고 서류를 카톡으로 받고 있었다</h2>
+        <p>
+          렌탈 차량에 사고가 나면 고객에게 동의서, 운전면허증, 보험 관련 증빙 같은 서류를
+          받아야(징구해야) 합니다. 기존에는 담당자가 카톡과 전화로 하나하나 안내하고,
+          고객이 보낸 사진을 수기로 정리해 거래처에 전달했습니다. 안내 누락, 서류 재요청,
+          개인정보가 메신저에 남는 문제가 반복됐습니다.
+        </p>
+        <p>
+          이 시스템이 특히 조심스러웠던 이유는 <strong>사용자가 우리 고객이 아니라 거래처의 고객</strong>이라는 점입니다.
+          거래처가 자기 고객에게 보내는 페이지이기 때문에 요구사항은 웬만하면 수용해야 했고,
+          화면 하나의 오류가 곧 거래처의 신뢰 문제로 이어지는 구조였습니다.
+          그리고 이 모든 걸 다루는 프론트엔드는 저 하나였습니다.
+        </p>
+      </section>
+
+      <!-- ============ 2. 접근 ============ -->
+      <section>
+        <h2><span class="num">02</span>접근 — 프로세스를 그리고, 혼자서 전부 만들었다</h2>
+        <p>
+          먼저 기존 카톡 기반 프로세스(as-is)를 화면 단위로 늘어놓고, 시스템화된 플로우(to-be)로
+          재구성했습니다. 고객이 밟는 단계를 <strong>동의 → 운전자 정보·서명 → 본인인증 → 면허 확인 →
+          계약자 확인 → 서류 제출 → 완료</strong>로 정리하고, 개인/법인 등 계약 유형별로 필요한 서류
+          요건까지 함께 정의했습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/accident-intake/planning-canvas.png" target="_blank">
+            <img src="../assets/accident-intake/planning-canvas.png" alt="사고접수 징구 시스템 기획 캔버스" loading="lazy" />
+          </a>
+          <figcaption>기획 캔버스 — 기존 프로세스(as-is)를 늘어놓고 시스템 플로우(to-be)로 재구성</figcaption>
+        </figure>
+        <figure class="breakout">
+          <a href="../assets/accident-intake/flow-mobile.png" target="_blank">
+            <img src="../assets/accident-intake/flow-mobile.png" alt="모바일 접수 플로우와 서류 요건 정의" loading="lazy" />
+          </a>
+          <figcaption>단계별 모바일 플로우와 계약 유형별 서류 요건 정의. 가족·법인 등 케이스별 제출 서류를 명시했다</figcaption>
+        </figure>
+        <p>
+          1인 개발이었기 때문에 디자인에 쓸 시간을 줄이는 게 중요했습니다. 이때부터 <strong>Figma AI로
+          시안을 생성하고 다듬는 방식</strong>을 시도했고, 만든 시안을 프로토타입으로 거래처와 확인하며
+          요구사항을 좁혔습니다.
+        </p>
+      </section>
+
+      <!-- ============ 3. 결과물 ============ -->
+      <section>
+        <h2><span class="num">03</span>결과물 — 링크 하나로 끝나는 접수 플로우</h2>
+        <p>
+          고객은 문자로 받은 링크에서 개인(신용)정보 동의, 운전자 정보 입력과 서명,
+          PASS 본인인증을 거쳐 서류를 제출합니다. 계약자 정보를 확인하고 계약 구분(개인/법인)에 따라
+          요구 서류가 달라지며, 제출이 끝나면 거래처 담당자에게 검토 링크가 전달됩니다.
+        </p>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/accident-intake/app-consent.png" target="_blank">
+              <img src="../assets/accident-intake/app-consent.png" alt="개인(신용)정보 수집 및 이용 동의 화면" loading="lazy" />
+            </a>
+            <figcaption>개인(신용)정보 동의 — 항목별 아코디언</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/app-signature.png" target="_blank">
+              <img src="../assets/accident-intake/app-signature.png" alt="동의 서명 화면" loading="lazy" />
+            </a>
+            <figcaption>운전자명 확인과 전자 서명</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/app-contractor-check.png" target="_blank">
+              <img src="../assets/accident-intake/app-contractor-check.png" alt="차량 계약자 및 운전자 확인 화면" loading="lazy" />
+            </a>
+            <figcaption>계약자 확인 — 계약 구분·관계 선택</figcaption>
+          </figure>
+        </div>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/accident-intake/app-doc-submit.png" target="_blank">
+              <img src="../assets/accident-intake/app-doc-submit.png" alt="서류 제출 화면" loading="lazy" />
+            </a>
+            <figcaption>서류 제출 — 계약 구분에 따라 필수·추가 서류가 달라진다</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/app-masking.png" target="_blank">
+              <img src="../assets/accident-intake/app-masking.png" alt="개인정보 마스킹 처리 도구" loading="lazy" />
+            </a>
+            <figcaption>마스킹 도구 — 업로드한 서류에서 개인정보를 드래그로 직접 가릴 수 있다</figcaption>
+          </figure>
+        </div>
+        <div class="callout">
+          <div class="title">디테일 — 서류 속 개인정보는 고객이 직접 가린다</div>
+          제출 서류에는 접수에 불필요한 개인정보가 섞여 있는 경우가 많습니다.
+          업로드 단계에 <strong>드래그 마스킹 도구</strong>를 넣어 고객이 스스로 가리고 제출하게 했습니다 —
+          되돌리기·전체 지우기까지 지원해 실수해도 다시 할 수 있습니다.
+        </div>
+      </section>
+
+      <!-- ============ 4. Deep dive ============ -->
+      <section>
+        <h2><span class="num">04</span>Deep dive — 외부 인증이 실패해도 접수는 끝나야 한다</h2>
+        <p>
+          운전면허 확인에는 외부 업체의 eKYC(신분증 촬영 + 얼굴 인증)를 연동했습니다.
+          그런데 운영해 보니 외부 서비스 사정으로 <strong>얼굴 인증이 안 되는 경우</strong>가 생겼고,
+          거래처에서도 자동 인증만으로는 안 된다는 요구가 왔습니다.
+        </p>
+        <ul>
+          <li><strong>자동/수동 선택 화면 추가</strong> — 요구사항 변경을 수용해, eKYC 자동 인증과 면허증 사진 직접 업로드 중 선택할 수 있게 재설계</li>
+          <li><strong>실패 시 탈출구 설계</strong> — 얼굴 인증이 실패하면 오류 화면에서 "다른 방법으로 인증하기"로 선택 화면에 되돌아가, 수동 업로드로 접수를 끝낼 수 있게 함</li>
+        </ul>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/accident-intake/app-license-choice.png" target="_blank">
+              <img src="../assets/accident-intake/app-license-choice.png" alt="자동/수동 인증 방법 선택 화면" loading="lazy" />
+            </a>
+            <figcaption>인증 방법 선택 — 자동 인증 / 직접 업로드</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/app-ekyc-intro.png" target="_blank">
+              <img src="../assets/accident-intake/app-ekyc-intro.png" alt="외부 eKYC 인증 안내 화면" loading="lazy" />
+            </a>
+            <figcaption>외부 eKYC — 신분증 인증 + 얼굴 인증</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/app-ekyc-error.png" target="_blank">
+              <img src="../assets/accident-intake/app-ekyc-error.png" alt="얼굴 인증 오류 화면과 복구 경로" loading="lazy" />
+            </a>
+            <figcaption>인증 실패 — 상단의 복구 링크로 선택 화면 복귀</figcaption>
+          </figure>
+        </div>
+        <div class="callout">
+          <div class="title">이 화면들이 말하는 것</div>
+          해피패스는 누구나 만듭니다. 외부 의존성이 실패했을 때 사용자가 갇히지 않고
+          <strong>다른 길로 목적지까지 갈 수 있게 하는 것</strong>이 실무 프론트엔드의 일이라고 생각합니다.
+        </div>
+      </section>
+
+      <!-- ============ 5. 리뷰 페이지 ============ -->
+      <section>
+        <h2><span class="num">05</span>거래처 리뷰 페이지 — 제출된 서류의 검토까지</h2>
+        <p>
+          고객이 제출을 완료하면 거래처 담당자에게 검토용 링크가 전달됩니다.
+          링크는 <strong>비밀번호로 보호</strong>되고 <strong>조회 만료일</strong>이 있어 무기한 노출되지 않습니다.
+          담당자는 접수 정보, 면허 인증 결과, 서명된 동의서와 제출 서류를 한 화면에서 확인하고
+          <strong>반려 또는 확인 완료</strong>로 처리합니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/accident-intake/review-gate.png" target="_blank">
+              <img src="../assets/accident-intake/review-gate.png" alt="리뷰 페이지 비밀번호 확인" loading="lazy" />
+            </a>
+            <figcaption>리뷰 페이지 진입 — 비밀번호 게이트</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/accident-intake/review-page.png" target="_blank">
+              <img src="../assets/accident-intake/review-page.png" alt="고객 제출 서류 확인 리뷰 페이지" loading="lazy" />
+            </a>
+            <figcaption>고객 제출 서류 확인 — 접수 정보 · 인증 결과 · 동의서 · 반려/완료 처리</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 6. 운영 ============ -->
+      <section>
+        <h2><span class="num">06</span>출시가 끝이 아니었다</h2>
+        <p>
+          오픈 이후에도 거래처 요구사항 변경과 유지보수가 계속됐습니다.
+          위의 자동/수동 선택 화면 자체가 운영 중에 추가된 요구사항이고,
+          그 외에도 서류 요건 변경, 문구·플로우 수정이 잦았습니다.
+          B2B2C 시스템에서는 <strong>배포 이후의 변경 속도가 곧 서비스 품질</strong>이라는 걸 체감한 프로젝트입니다.
+        </p>
+      </section>
+
+      <!-- ============ 7. 배운 것 ============ -->
+      <section>
+        <h2><span class="num">07</span>배운 것</h2>
+        <ul>
+          <li><strong>외부 의존성은 반드시 실패한다.</strong> 연동을 붙이는 것보다, 실패했을 때의 경로를 설계하는 데 더 많은 고민이 필요하다.</li>
+          <li><strong>요구사항을 수용하는 것과 휘둘리는 것은 다르다.</strong> 거래처 요구를 받아들이되, 플로우 전체가 일관되게 유지되도록 화면 구조를 다시 잡는 건 만드는 사람의 몫이다.</li>
+          <li><strong>1인 개발일수록 도구를 활용해야 한다.</strong> Figma AI로 디자인 초안을 빠르게 만들고, 아낀 시간을 예외 설계와 검증에 썼다.</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록으로</a>
+      <div class="contact-row">
+        <a href="mailto:ishwuzi@gmail.com">ishwuzi@gmail.com</a>
+        <a href="https://github.com/uzyhu" target="_blank">github.com/uzyhu</a>
+      </div>
+      <p>© 2026 우지후</p>
+    </div>
+  </footer>
+
+</body>
+</html>

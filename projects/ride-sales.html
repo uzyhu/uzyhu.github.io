@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RIDE SALES — 차량 판매·출고 관리 시스템 | 우지후</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="../index.html">우지후</a>
+      <nav>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록</a>
+      <div class="eyebrow">Case Study</div>
+      <h1>RIDE SALES<br />차량 판매·출고 관리 시스템</h1>
+      <p class="lede">
+        엑셀 파일 여러 개에 흩어져 있던 차량 영업의 돈의 흐름과 고객 관리를,
+        계약 → 재고 → 출고 → 문서 발행까지 하나의 시스템으로 만든 사내 웹앱입니다.
+        기획을 리드하면서 프론트엔드 개발을 함께 했습니다.
+      </p>
+      <dl class="meta-grid">
+        <div><dt>역할</dt><dd>기획 리드 · UX 설계 · 프론트엔드 개발</dd></div>
+        <div><dt>기간</dt><dd>2026.03 – 2026.04</dd></div>
+        <div><dt>협업</dt><dd>세일즈팀 · 개발팀</dd></div>
+        <div><dt>핵심 스택</dt><dd>React · TypeScript · Tailwind</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <article class="case">
+    <div class="wrap">
+
+      <!-- ============ 1. 문제 ============ -->
+      <section>
+        <h2><span class="num">01</span>문제 — 모든 것이 엑셀 안에 있었다</h2>
+        <p>
+          세일즈팀은 차량 계약금, 재고, 출고, 정산까지 <strong>모든 돈의 흐름과 고객 관리를 여러 개의 엑셀 파일</strong>로 하고 있었습니다.
+          파일마다 시트가 여러 개였고, 같은 데이터가 여러 곳에 중복돼 있어 현황을 파악하는 것부터가 일이었습니다.
+        </p>
+        <p>
+          더 어려운 문제는 <strong>언어</strong>였습니다. 같은 업무를 팀장님이 설명할 때와 실무자가 설명할 때 용어가 달랐고,
+          정리되지 않은 용어 위에서 요구사항을 받으니 들을 때마다 내용이 흔들렸습니다.
+          실제로 앞서 진행되던 기획이 이 지점에서 막혔고, 제가 투입되어 기획을 처음부터 다시 잡게 됐습니다.
+        </p>
+        <div class="callout">
+          <div class="title">이 프로젝트에서 증명하고 싶은 것</div>
+          기획은 화면을 그리는 일이 아니라 <strong>흩어진 업무의 언어와 흐름을 하나로 합의시키는 일</strong>에서 시작한다는 것,
+          그리고 그 합의를 직접 코드로 구현할 수 있을 때 제품이 얼마나 빨라지는지입니다.
+        </div>
+      </section>
+
+      <!-- ============ 2. 접근 ============ -->
+      <section>
+        <h2><span class="num">02</span>접근 — 용어와 흐름부터 다시 정리했다</h2>
+
+        <h3>업무를 세 단계의 공통 언어로 재정의</h3>
+        <p>
+          영업을 모르는 상태에서 시작했기 때문에, 화면보다 먼저 <strong>도메인을 그리는 일</strong>부터 했습니다.
+          인터뷰를 반복하며 흩어진 업무를 <strong>계약 → 재고 → 출고</strong> 세 단계로 재정의하고,
+          각 단계에서 쓰이는 문서(매입견적서·판매견적서·제작증)와 상태값, 예외 흐름을 함께 적어 팀 전체가 같은 그림을 보게 했습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/flow-domain.png" target="_blank">
+            <img src="../assets/ride-sales/flow-domain.png" alt="계약-재고-출고 도메인 흐름 정리" loading="lazy" />
+          </a>
+          <figcaption>팀마다 다르게 부르던 업무를 계약 → 재고 → 출고 세 단계로 합의한 도메인 맵</figcaption>
+        </figure>
+
+        <h3>이해관계자 사이의 돈·차량·서류 흐름 도식화</h3>
+        <p>
+          제조사(KGM) – 회사 – 영업사원 – 고객 사이에 차량과 돈, 서류가 어떻게 오가는지 플로우로 그렸습니다.
+          중간중간 붙은 메모는 영업팀 인터뷰에서 나온 예외 케이스들입니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/flow-business.png" target="_blank">
+            <img src="../assets/ride-sales/flow-business.png" alt="세일즈 업무 플로우 다이어그램" loading="lazy" />
+          </a>
+          <figcaption>제조사–회사–영업사원을 관통하는 업무 플로우. 합의될 때마다 다시 그렸다</figcaption>
+        </figure>
+
+        <h3>해피패스가 아니라 예외부터 설계</h3>
+        <p>
+          실무 시스템은 취소·환불에서 무너집니다. 영업사원 해제와 고객 해약 각각에 대해
+          환불/재등록 분기, 결제내역 처리, 취소 히스토리가 남는 위치까지 정의했고,
+          세금계산서·영수증·환불 각각의 <strong>결재(승인) 프로세스</strong>도 따로 그렸습니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/ride-sales/flow-cancel-refund.png" target="_blank">
+              <img src="../assets/ride-sales/flow-cancel-refund.png" alt="해약·환불 분기 플로우차트" loading="lazy" />
+            </a>
+            <figcaption>해약 주체별 환불·재등록 분기 설계</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-sales/flow-approval.png" target="_blank">
+              <img src="../assets/ride-sales/flow-approval.png" alt="세금계산서·영수증·환불 결재 프로세스" loading="lazy" />
+            </a>
+            <figcaption>문서 유형별 결재 요청 → 승인 → 발행 프로세스</figcaption>
+          </figure>
+        </div>
+
+        <h3>상태값과 계산 로직까지 문서로</h3>
+        <p>
+          보조금 신청 상태값, 손익 시뮬레이션 계산식(MSRP, 매입/판매 할인, 면세 기준)처럼
+          개발에서 다툼이 생기기 쉬운 규칙은 화면 시안 옆에 어노테이션으로 명시해 개발팀과 공유했습니다.
+          복잡한 화면은 시안 위에 동작·데이터 규칙을 직접 달았습니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/ride-sales/spec-status-calc.png" target="_blank">
+              <img src="../assets/ride-sales/spec-status-calc.png" alt="상태값 정의와 손익 계산 로직 어노테이션" loading="lazy" />
+            </a>
+            <figcaption>상태값 정의와 손익 시뮬레이션 계산식 명세</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-sales/spec-outbound-detail.png" target="_blank">
+              <img src="../assets/ride-sales/spec-outbound-detail.png" alt="출고 상세 화면 단위 상세 기획" loading="lazy" />
+            </a>
+            <figcaption>출고 상세 화면의 동작·데이터 규칙 어노테이션</figcaption>
+          </figure>
+        </div>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/planning-canvas.png" target="_blank">
+            <img src="../assets/ride-sales/planning-canvas.png" alt="전체 기획 캔버스 전경" loading="lazy" />
+          </a>
+          <figcaption>전체 기획 캔버스. 화면 정의 → 상세 기획 → 정책 메모가 한 판에서 관리됐다</figcaption>
+        </figure>
+
+        <h3>말로 안 되면, 클릭되는 프로토타입으로</h3>
+        <p>
+          문서와 시안으로 합의가 안 되는 부분은 <strong>AI 프로토타이핑 도구로 동작하는 가짜 제품을 만들어 URL로 공유</strong>했습니다.
+          영업팀은 직접 클릭해 보며 "이게 아니라 이거"라고 말할 수 있게 됐고,
+          개발팀은 구현 전에 화면 구조를 미리 파악할 수 있었습니다. 프로토타입 버전이 900을 넘길 만큼 고치고 또 고쳤습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/ai-prototype.png" target="_blank">
+            <img src="../assets/ride-sales/ai-prototype.png" alt="AI 프로토타이핑 도구로 만든 동작하는 프로토타입" loading="lazy" />
+          </a>
+          <figcaption>AI 프로토타이핑으로 만든 동작하는 시안. 영업팀·개발팀과 실시간으로 공유하며 의견을 좁혔다</figcaption>
+        </figure>
+
+        <div class="callout">
+          <div class="title">개발자가 기획을 하면 달라지는 것</div>
+          요구사항은 확정된 듯하다가도 계속 뒤집혔고, 그때마다 개발팀은 만든 것을 고쳐야 했습니다.
+          저는 구현 비용을 아는 상태로 중간에 서 있었기 때문에 <strong>구현이 무거운 요구는 대안을 제시하며 조정</strong>하고,
+          반영할 것은 빠르게 확정 지을 수 있었습니다. 기획–개발 사이의 왕복 비용을 줄이는 것이 이 역할의 핵심이었습니다.
+        </div>
+      </section>
+
+      <!-- ============ 3. 결과물 ============ -->
+      <section>
+        <h2><span class="num">03</span>결과물 — 엑셀이 하던 일을 시스템이 한다</h2>
+        <p>
+          기준정보(사업자·회원·영업사원·고객·차량 모델)부터 계약, 재고, 출고, 결제 내역, 문서 발행까지
+          영업 업무 전체를 다루는 웹앱으로 만들어졌습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/app-dashboard.png" target="_blank">
+            <img src="../assets/ride-sales/app-dashboard.png" alt="대시보드 화면" loading="lazy" />
+          </a>
+          <figcaption>대시보드 — 월 매출, 판매 대수, 진행중 계약을 한눈에</figcaption>
+        </figure>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/app-contract-detail.png" target="_blank">
+            <img src="../assets/ride-sales/app-contract-detail.png" alt="계약 상세 화면" loading="lazy" />
+          </a>
+          <figcaption>계약 상세 — 매입 정보 · 계약/고객 정보 · 손익 시뮬레이션의 3단 구성</figcaption>
+        </figure>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/app-outbound-detail.png" target="_blank">
+            <img src="../assets/ride-sales/app-outbound-detail.png" alt="출고 상세 화면" loading="lazy" />
+          </a>
+          <figcaption>출고 상세 — 매입/매출 견적 비교, 출고 차량 정보, 결제 내역과 문서 발행 상태</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 4. Deep dive ============ -->
+      <section>
+        <h2><span class="num">04</span>Deep dive — 출고 문서 자동화</h2>
+        <p>
+          제가 직접 구현한 핵심 기능입니다. 수기로 만들던 <strong>출고품의서와 자동차제작증</strong>을
+          시스템 안에서 <strong>생성 → 검수 → 미리보기 → PDF → 발행</strong>까지 처리합니다.
+          단순 CRUD가 아니라 OCR 후처리, 민감정보 처리, PDF 생성, 발행 워크플로우 설계를 한 번에 다룬 작업입니다.
+        </p>
+
+        <h3>OCR로 읽고, 사람이 검수한다</h3>
+        <p>
+          기존 제작증 이미지/PDF를 업로드하면 LLM(Claude Sonnet 4.5) 기반 OCR 파이프라인이 파싱해
+          초안을 만듭니다(파이프라인은 백엔드 개발자가 구축).
+          다만 <strong>OCR 결과를 바로 쓰지 않고, 발행 전에 사람이 확인·수정하는 단계를 반드시 거치도록</strong> 설계했습니다.
+          자동화보다 중요한 건 실수 없이 검토할 수 있는 자리를 남기는 것이라고 판단했습니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/ride-sales/app-ocr-upload.png" target="_blank">
+              <img src="../assets/ride-sales/app-ocr-upload.png" alt="제작증 OCR 업로드 모달" loading="lazy" />
+            </a>
+            <figcaption>제작증 이미지/PDF 업로드 → OCR 파싱</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-sales/app-cert-issue-modal.png" target="_blank">
+              <img src="../assets/ride-sales/app-cert-issue-modal.png" alt="제작증 발행 전 검수 모달" loading="lazy" />
+            </a>
+            <figcaption>발행 전 검수 — 날짜·신청 여부 확인, 전체 OCR 데이터 수정 진입</figcaption>
+          </figure>
+        </div>
+
+        <h3>문서 미리보기 = PDF의 원본</h3>
+        <p>
+          제작증과 출고품의서는 실제 서식 그대로 DOM으로 렌더링합니다.
+          PDF는 화면을 캡처하는 방식이 아니라 <strong>미리보기와 동일한 DOM을 기준으로 생성</strong>(html-to-image + jsPDF)해서,
+          사용자가 본 것과 발행되는 것이 항상 일치합니다. 문서 컴포넌트는 공통 구조로 분리해 두 문서가 재사용합니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/ride-sales/app-cert-preview.png" target="_blank">
+              <img src="../assets/ride-sales/app-cert-preview.png" alt="자동차제작증 미리보기" loading="lazy" />
+            </a>
+            <figcaption>자동차제작증 미리보기 — 수정 · 발행 · 출력</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-sales/app-report-preview.png" target="_blank">
+              <img src="../assets/ride-sales/app-report-preview.png" alt="출고품의서 미리보기" loading="lazy" />
+            </a>
+            <figcaption>출고품의서 미리보기 — 출고 데이터 + 사용자 입력 조합으로 자동 생성</figcaption>
+          </figure>
+        </div>
+
+        <h3>민감정보와 도메인 규칙</h3>
+        <ul>
+          <li><strong>주민등록번호는 마스킹 상태로 다루다가, 발행 직전에만 비마스킹 API로 재조회</strong>해 최신 값을 반영 — 민감정보 노출은 최소화하면서 문서 정확도는 보장</li>
+          <li>개인 / 개인사업자 / 법인사업자에 따라 문서 표기 방식 분기</li>
+          <li>공동명의자의 이름·주민등록번호를 줄바꿈 형태로 문서에 반영</li>
+          <li>공급가액 계산에 탁송료 포함 여부, 보험료, 구조변경 금액, 부가세 제외 기준까지 반영</li>
+          <li>발행일자와 양도일자를 분리해 반영</li>
+        </ul>
+
+        <h3>발행된 문서는 출고 건에 매핑</h3>
+        <p>
+          생성·발행된 문서는 파일 유형별로 출고 건에 매핑되어, 계약서·견적서·제작증·품의서·영수증을
+          한 화면에서 찾을 수 있습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-sales/app-file-manager.png" target="_blank">
+            <img src="../assets/ride-sales/app-file-manager.png" alt="파일관리 모달" loading="lazy" />
+          </a>
+          <figcaption>파일관리 — 문서 유형 필터와 출고 건 단위의 파일 매핑</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 5. 스택 ============ -->
+      <section>
+        <h2><span class="num">05</span>기술 스택</h2>
+        <div class="stack-list">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">TanStack Query</span>
+          <span class="tag">React Router</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Axios</span>
+          <span class="tag">html-to-image</span>
+          <span class="tag">jsPDF</span>
+          <span class="tag">Figma / FigJam</span>
+        </div>
+      </section>
+
+      <!-- ============ 6. 배운 것 ============ -->
+      <section>
+        <h2><span class="num">06</span>배운 것</h2>
+        <ul>
+          <li><strong>기획은 언어를 정리하는 일에서 시작한다.</strong> 용어가 합의되지 않으면 화면을 아무리 그려도 요구사항은 계속 흔들린다.</li>
+          <li><strong>만들 수 있는 사람이 기획하면 조정이 빨라진다.</strong> 구현 비용을 아는 상태에서 협상하면, 커트할 것과 반영할 것이 그 자리에서 정리된다.</li>
+          <li><strong>자동화보다 중요한 건 검수의 자리다.</strong> OCR·자동 생성 문서처럼 틀리면 안 되는 것일수록, 사람이 확인하는 단계를 워크플로우에 심어야 한다.</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록으로</a>
+      <div class="contact-row">
+        <a href="mailto:ishwuzi@gmail.com">ishwuzi@gmail.com</a>
+        <a href="https://github.com/uzyhu" target="_blank">github.com/uzyhu</a>
+      </div>
+      <p>© 2026 우지후</p>
+    </div>
+  </footer>
+
+</body>
+</html>

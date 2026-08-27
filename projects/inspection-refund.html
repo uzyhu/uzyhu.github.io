@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>법정검사 비용 환급 시스템 | 우지후</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="../index.html">우지후</a>
+      <nav>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록</a>
+      <div class="eyebrow">Case Study</div>
+      <h1>법정검사 비용 환급 시스템<br />전화로 돌아가던 정산 업무의 자동화</h1>
+      <p class="lede">
+        렌탈 차량이 법정검사(정기·종합검사)를 받으면, 고객이 선지불한 검사비를 회사가 확인하고 환급해야 합니다.
+        전화와 카카오톡, 수기 이체로 돌아가던 이 정산 업무를 고객 셀프 청구 + OCR 자동 입력 +
+        입금 문자 매칭으로 자동화했습니다. 기획, 디자인, 프론트엔드까지 열흘 동안 혼자 만들었습니다.
+      </p>
+      <dl class="meta-grid">
+        <div><dt>역할</dt><dd>기획 · 디자인 · 프론트엔드 개발 (1인)</dd></div>
+        <div><dt>기간</dt><dd>2026.05.19 – 05.28 (10일)</dd></div>
+        <div><dt>사용자</dt><dd>검사받은 고객 · 법정검사팀</dd></div>
+        <div><dt>핵심 스택</dt><dd>React · TypeScript · Vite</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <article class="case">
+    <div class="wrap">
+
+      <!-- ============ 1. 문제 ============ -->
+      <section>
+        <h2><span class="num">01</span>문제 — 정산 창구가 전화였다</h2>
+        <p>
+          고객이 법정검사를 받고 나면 이렇게 흘러갔습니다. 고객(또는 검사소)이 팀에 <strong>전화</strong>를 걸어
+          "검사받았으니 정산해 달라"고 알리고, 담당자가 <strong>카카오톡 비즈니스</strong>로 영수증을 받아 확인한 뒤,
+          <strong>국민은행 대량이체</strong>에 수기로 등록해 송금합니다. 그리고 그 내역을 다시 손으로 정리합니다.
+        </p>
+        <p>
+          관리 차량이 1만 4천 대가 넘는 규모라 전화가 끊이지 않았고, 영수증–청구 금액–실제 이체 금액을
+          사람이 눈으로 대조하다 보니 시간도 오래 걸리고 누락 위험도 컸습니다.
+          이 흐름 전체를 시스템으로 옮기는 것이 목표였고, 이번에도 프론트는 저 혼자였습니다.
+        </p>
+      </section>
+
+      <!-- ============ 2. 접근 ============ -->
+      <section>
+        <h2><span class="num">02</span>접근 — 전화 대신 링크 하나</h2>
+        <p>
+          고객이 전화를 걸 필요가 없도록, 링크 하나로 청구가 끝나는 모바일 플로우를 만들었습니다.
+          <strong>동의 → 차량번호 확인 → 청구 입력 → 최종 확인 → 접수</strong>의 3단계 구조로,
+          처음 들어온 사용자를 위해 진행 안내 모달을 먼저 보여줍니다.
+        </p>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/inspection-refund/m-consent.png" target="_blank">
+              <img src="../assets/inspection-refund/m-consent.png" alt="개인(신용)정보 수집 이용 동의 화면" loading="lazy" />
+            </a>
+            <figcaption>개인(신용)정보 동의 — 수집 목적·항목 명시</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/inspection-refund/m-guide.png" target="_blank">
+              <img src="../assets/inspection-refund/m-guide.png" alt="청구 진행 3단계 안내 모달" loading="lazy" />
+            </a>
+            <figcaption>첫 진입 시 3단계 진행 안내</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/inspection-refund/m-vehicle-check.png" target="_blank">
+              <img src="../assets/inspection-refund/m-vehicle-check.png" alt="차량번호 확인 화면" loading="lazy" />
+            </a>
+            <figcaption>차량번호 입력 → 등록 정보와 자동 대조</figcaption>
+          </figure>
+        </div>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/inspection-refund/m-claim-input.png" target="_blank">
+              <img src="../assets/inspection-refund/m-claim-input.png" alt="청구 정보 입력 화면" loading="lazy" />
+            </a>
+            <figcaption>청구금액 · 영수증 첨부 · 입금 계좌 입력</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/inspection-refund/m-confirm.png" target="_blank">
+              <img src="../assets/inspection-refund/m-confirm.png" alt="청구 내용 확인 화면" loading="lazy" />
+            </a>
+            <figcaption>제출 전 영수증 미리보기와 최종 확인</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/inspection-refund/m-complete.png" target="_blank">
+              <img src="../assets/inspection-refund/m-complete.png" alt="청구 접수 완료 화면" loading="lazy" />
+            </a>
+            <figcaption>접수 완료 — 처리 소요 기간 안내</figcaption>
+          </figure>
+        </div>
+        <p>
+          차량번호를 입력하면 등록된 차량 정보(차종·소유자)를 조회해 보여줘서, 고객이 자기 차가 맞는지
+          그 자리에서 확인하고 넘어갑니다. 카메라 촬영과 파일 업로드를 모두 지원해
+          현장에서 영수증을 바로 찍어 올릴 수 있습니다.
+        </p>
+      </section>
+
+      <!-- ============ 3. Deep dive: OCR ============ -->
+      <section>
+        <h2><span class="num">03</span>Deep dive — 영수증은 LLM이 읽고, 검수는 사람이</h2>
+        <p>
+          고객이 올린 영수증은 <strong>LLM(Claude Sonnet 4.5) 기반 OCR 파이프라인이 파싱해 금액이
+          어드민의 청구 건에 자동 입력</strong>됩니다. 담당자가 카카오톡으로 영수증을 받아 금액을 옮겨 적던 일이 사라졌습니다.
+          파싱 파이프라인 자체는 백엔드 개발자가 구축했고, 저는 그 자동화가 안전하게 쓰이도록
+          앞뒤의 화면 구조를 설계하고 구현했습니다.
+        </p>
+        <p>
+          핵심은 자동 인식 값을 그대로 믿지 않는 구조입니다. 금액을 <strong>청구금액(고객 입력) /
+          증빙금액(영수증 인식) / 실이체금액(실제 송금)</strong> 세 값으로 분리해 관리하고,
+          셋이 일치해야 "실이체금액 일치" 상태가 됩니다. 불일치하면 담당자가 금액 수정 모달로 보정합니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/inspection-refund/a-detail.png" target="_blank">
+            <img src="../assets/inspection-refund/a-detail.png" alt="법정검사 상세 — 금액 3중 대조와 증빙자료" loading="lazy" />
+          </a>
+          <figcaption>어드민 상세 — 청구·증빙·실이체 금액의 3중 대조, 증빙 영수증과 계좌 정보가 한 화면에</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 4. Deep dive: 문자 매칭 ============ -->
+      <section>
+        <h2><span class="num">04</span>Deep dive — 이체 확인까지 자동으로</h2>
+        <p>
+          송금이 실제로 됐는지 확인하는 일도 수작업이었습니다. 은행 <strong>입금 문자를 연동</strong>해
+          청구 건과 자동 매칭하고 실이체금액을 채우도록 했고, 문자 연동이 안 되는 경우를 위해
+          <strong>수동 입력 폴백</strong>을 함께 설계했습니다. 외부 연동은 반드시 실패하는 경우가 있다는 걸
+          이전 프로젝트에서 배웠기 때문입니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/inspection-refund/a-list-all.png" target="_blank">
+            <img src="../assets/inspection-refund/a-list-all.png" alt="법정검사 어드민 목록" loading="lazy" />
+          </a>
+          <figcaption>어드민 목록 — 미수검 → 수검완료 → 청구요청 → 지급완료 상태 파이프라인으로 1만 4천여 건 관리</figcaption>
+        </figure>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/inspection-refund/a-claims.png" target="_blank">
+              <img src="../assets/inspection-refund/a-claims.png" alt="청구요청 탭 — 문자 매칭 상태" loading="lazy" />
+            </a>
+            <figcaption>청구요청 탭 — 건별 문자 매칭 상태와 수동 입력 진입</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/inspection-refund/a-transfer-modal.png" target="_blank">
+              <img src="../assets/inspection-refund/a-transfer-modal.png" alt="실이체금액 수동 입력 모달" loading="lazy" />
+            </a>
+            <figcaption>실이체금액 수동 입력 — 문자 연동 실패 시의 폴백</figcaption>
+          </figure>
+        </div>
+        <div class="callout">
+          <div class="title">검사 주체까지 포괄하는 구조</div>
+          고객이 직접 검사받는 경우 외에 <strong>대행업체가 검사를 수행하는 경우</strong>까지 검사구분으로 나눠,
+          건별로 고객 청구 흐름과 대행업체 정산 흐름을 한 파이프라인에서 관리합니다.
+        </div>
+      </section>
+
+      <!-- ============ 5. 스택 ============ -->
+      <section>
+        <h2><span class="num">05</span>기술 스택</h2>
+        <div class="stack-list">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Figma</span>
+          <span class="tag">LLM 기반 OCR (백엔드 협업)</span>
+        </div>
+      </section>
+
+      <!-- ============ 6. 배운 것 ============ -->
+      <section>
+        <h2><span class="num">06</span>배운 것</h2>
+        <ul>
+          <li><strong>자동화의 목표는 사람을 없애는 게 아니라 전화를 없애는 것.</strong> 반복 커뮤니케이션은 시스템이 받아내고, 사람은 판단과 검수에만 개입하게 만들었다.</li>
+          <li><strong>돈이 걸린 자동화는 대조 구조가 전부다.</strong> 청구·증빙·실이체 세 값을 분리하고 일치를 검증하는 구조가 자동 입력을 믿을 수 있게 만든다.</li>
+          <li><strong>열흘짜리 프로젝트는 범위 결정이 90%다.</strong> 고객 플로우는 3단계로 최소화하고, 복잡함은 어드민 쪽에 몰아넣었다.</li>
+        </ul>
+      </section>
+
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록으로</a>
+      <div class="contact-row">
+        <a href="mailto:ishwuzi@gmail.com">ishwuzi@gmail.com</a>
+        <a href="https://github.com/uzyhu" target="_blank">github.com/uzyhu</a>
+      </div>
+      <p>© 2026 우지후</p>
+    </div>
+  </footer>
+
+</body>
+</html>
