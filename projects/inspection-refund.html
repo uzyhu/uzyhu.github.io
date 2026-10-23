@@ -148,6 +148,15 @@
           </a>
           <figcaption>어드민 상세 — 청구·증빙·실이체 금액의 3중 대조, 증빙 영수증과 계좌 정보가 한 화면에</figcaption>
         </figure>
+        <div class="decision">
+          <div class="title">결정 — OCR 결과를 어디까지 믿을 것인가</div>
+          <ol>
+            <li><span class="opt">A</span><div><strong>OCR 값으로 바로 지급</strong> — 가장 빠르지만, 오인식 한 건이 곧 잘못된 송금이 된다</div></li>
+            <li><span class="opt">B</span><div><strong>OCR 없이 담당자 수기 입력</strong> — 안전하지만, 1만 4천 대 규모에서는 전화 대신 입력 업무가 쌓일 뿐이다</div></li>
+            <li class="chosen"><span class="opt">선택</span><div><strong>자동 입력 + 3중 대조, 불일치만 사람이 보정</strong> — 대부분은 자동으로 흐르고, 사람은 값이 어긋난 건에만 개입한다</div></li>
+          </ol>
+          <p class="why">LLM은 틀릴 수 있다는 걸 전제로 했습니다. 자동화를 포기하지 않으면서 돈이 걸린 오류를 막으려면, 사람의 눈이 필요한 순간을 시스템이 골라 주는 구조가 필요했습니다.</p>
+        </div>
       </section>
 
       <!-- ============ 4. Deep dive: 문자 매칭 ============ -->

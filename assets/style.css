@@ -123,6 +123,27 @@ article.case { padding: 24px 0 96px; }
 }
 .callout .title { font-weight: 800; margin-bottom: 6px; color: var(--accent); font-size: 15px; }
 
+/* decision (검토한 선택지와 결정 이유) */
+.decision {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px 24px; margin: 28px 0;
+}
+.decision .title { font-weight: 800; color: var(--accent); font-size: 15px; margin-bottom: 14px; }
+.decision ol { list-style: none; display: grid; gap: 8px; margin-bottom: 16px; }
+.decision li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 12px 14px; border-radius: 10px; background: var(--bg-soft);
+  font-size: 15px; color: var(--ink-soft); line-height: 1.65;
+}
+.decision li .opt {
+  flex: 0 0 auto; font-size: 12px; font-weight: 800; color: var(--ink-faint);
+  border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; margin-top: 2px; background: var(--bg);
+}
+.decision li strong { color: var(--ink); }
+.decision li.chosen { background: var(--accent-soft); }
+.decision li.chosen .opt { color: #fff; background: var(--accent); border-color: var(--accent); }
+.case .decision p.why { margin: 0; font-size: 15.5px; color: var(--ink); }
+
 /* figures */
 figure { margin: 28px 0 36px; }
 figure.breakout { width: min(var(--maxw-wide) - 48px, 100%); margin-left: 50%; transform: translateX(-50%); }
