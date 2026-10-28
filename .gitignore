@@ -6,6 +6,7 @@ image (*.png
 resume.html
 resume-*.html
 career-*.html
+application-*.html
 portfolio-print.html
 *.pdf
 
