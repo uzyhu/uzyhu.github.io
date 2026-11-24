@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>정비 구독 서비스 | 우지후</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon.png" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="inner">
+      <a class="logo" href="../index.html">우지후</a>
+      <nav>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록</a>
+      <div class="eyebrow">Case Study · 진행 중</div>
+      <h1>정비 구독 서비스<br />고객 앱, 어드민, 서버를 출시 직전까지</h1>
+      <p class="lede">
+        라이드가 새로 여는 B2C 정비 구독 서비스입니다. 10월에 만든 <a href="service-pricing.html" style="color: var(--accent); font-weight: 600;">정비 상품 기획 도구</a>로 무엇을 얼마에 팔지 정했고,
+        11월부터는 그 상품을 고객이 실제로 가입하고 예약하는 앱과, 운영 매니저가 쓰는 어드민, 둘을 받치는 서버까지 넓혔습니다.
+        기획부터 구현까지 혼자 맡았고, 구현은 Claude Code로 했습니다.
+      </p>
+      <dl class="meta-grid">
+        <div><dt>역할</dt><dd>기획 · 디자인 · 구현 (앱 · 어드민 · 서버)</dd></div>
+        <div><dt>기간</dt><dd>2026.09 – 진행 중</dd></div>
+        <div><dt>사용자</dt><dd>고객 · 운영 매니저 · 사업 책임자</dd></div>
+        <div><dt>스택</dt><dd>React Native · React · Kotlin/Spring · AWS</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <article class="case">
+    <div class="wrap">
+
+      <!-- ============ 한눈에 보기 ============ -->
+      <section class="highlights">
+        <div class="section-label">핵심 내용 · 한눈에 보기</div>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <h3>앱 · 어드민 · 서버를 한 사람이</h3>
+            <p>두 달 남짓 동안 서버 커밋 260여 개, 도메인 모듈 14개, 서버 테스트 300개 이상. dev 환경에서 실기기로 돌려 보는 단계</p>
+          </div>
+          <div class="kpi-card">
+            <h3>계정은 한 사람에 하나</h3>
+            <p>본인인증으로 같은 사람임이 확인되면 묻지 않고 기존 계정에 합치고, 합친 뒤에 알린다</p>
+          </div>
+          <div class="kpi-card">
+            <h3>광고성 푸시는 서버가 거절</h3>
+            <p>마케팅 수신 동의자만 골라낼 수 있기 전까지는 "조심해서 쓰자" 대신 아예 보낼 수 없게 막았다</p>
+          </div>
+          <div class="kpi-card">
+            <h3>로컬에선 안 보이던 장애를 테스트로 고정</h3>
+            <p>본인인증 전부 거절, 운영 환경에서만 나는 로그아웃 오류. 원인을 찾은 뒤 같은 실수가 다시 통과하지 못하게 테스트로 막았다</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 1. 시작 ============ -->
+      <section>
+        <h2><span class="num">01</span>시작 — 정한 상품을 실제로 팔 수 있게</h2>
+        <p>
+          상품 기획 도구로 정비 멤버십의 구성과 가격을 정하고 나니, 다음 질문은 <strong>고객이 이걸 어떻게 사고 쓰게 할 것인가</strong>였습니다.
+          고객은 앱에서 내 차를 고르고 멤버십이나 단건 정비를 예약합니다. 운영 매니저는 어드민에서 예약을 확정하고 상담에 답합니다.
+          둘 다 같은 서버의 상품, 가격, 회원 데이터를 봐야 했기 때문에 세 가지를 한 번에 설계했습니다.
+        </p>
+        <p>
+          서버까지 직접 맡았습니다. 구현은 Claude Code로 했지만, 정책을 정하고 선택지를 비교하는 일은 제가 했습니다.
+          사업 판단이 필요한 지점은 선택지와 장단점을 정리해 사업 책임자에게 물었습니다.
+        </p>
+      </section>
+
+      <!-- ============ 2. 고객 앱 ============ -->
+      <section>
+        <h2><span class="num">02</span>고객 앱 — 내 차 기준으로 가격을 보여 준다</h2>
+        <p>
+          정비 가격은 차종마다 다릅니다. 그래서 앱은 <strong>내 차를 먼저 고르게 하고</strong>, 이후 모든 상품과 예약 화면의 가격을 그 차 기준으로 보여 줍니다.
+          정기적으로 관리받는 멤버십과, 필요할 때만 부르는 단건 정비를 홈에서 바로 나눠 고르게 했습니다.
+        </p>
+        <div class="fig-grid-4">
+          <figure>
+            <a href="../assets/ride-care/01-home.png" target="_blank"><img src="../assets/ride-care/01-home.png" alt="앱 홈 — 멤버십, 정비 예약, 다가오는 정비" loading="lazy" /></a>
+            <figcaption>홈</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/04-car-select.png" target="_blank"><img src="../assets/ride-care/04-car-select.png" alt="내 차 선택 — 제조사별" loading="lazy" /></a>
+            <figcaption>내 차 선택</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/02-membership.png" target="_blank"><img src="../assets/ride-care/02-membership.png" alt="멤버십 상품 목록 — 차종 기준 월 요금" loading="lazy" /></a>
+            <figcaption>멤버십 상품</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/05-booking.png" target="_blank"><img src="../assets/ride-care/05-booking.png" alt="정비 예약 — 주소와 희망 날짜" loading="lazy" /></a>
+            <figcaption>정비 예약</figcaption>
+          </figure>
+        </div>
+        <p style="text-align:center; font-size:14px; color: var(--ink-faint); margin-top:-20px;">금액 · 주소 블러 처리</p>
+        <ul>
+          <li><strong>예약은 단계가 열리는 순서대로</strong> — 받을 정비, 내 차, 주소를 정해야 날짜를 고를 수 있다. 출장비는 주소가 정해질 때 한 번만 붙고, 예상 금액이 아래에 계속 보인다</li>
+          <li><strong>결제는 아직 현장에서</strong> — 앱 결제가 붙기 전이라 "결제는 현장에서 해요"를 예약 첫 화면에 적고, 금액은 요청 때 굳힌 값으로 남긴다</li>
+        </ul>
+      </section>
+
+      <!-- ============ 3. 어드민 ============ -->
+      <section>
+        <h2><span class="num">03</span>어드민 — 들어오자마자 할 일이 보이게</h2>
+        <p>
+          운영 매니저가 어드민을 열었을 때 가장 먼저 알아야 하는 건 <strong>지금 처리해야 할 일</strong>입니다.
+          홈 맨 위에 확정을 기다리는 예약 수를 띄우고, 오늘과 내일 방문, 진행 중인 상담, 신규 회원을 옆에 모았습니다.
+          새 상담이 들어오면 화면 구석에 알림이 뜹니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-17-home-visit.png" target="_blank">
+            <img src="../assets/ride-care/admin-17-home-visit.png" alt="어드민 홈 — 지금 처리할 일과 내일 방문 일정" loading="lazy" />
+          </a>
+          <figcaption>어드민 홈 — 확정할 예약과, 고객이 아직 확인하지 않은 내일 방문이 할 일로 올라온다 (주소 블러 처리)</figcaption>
+        </figure>
+        <p>
+          예약은 매니저가 방문 시각을 정해 확정해야 끝납니다. 확정하면 고객에게 알림이 가고, 고객은 앱에서 <strong>"일정 확인했어요"</strong>를 눌러 답합니다.
+          방문 전날까지 고객이 확인하지 않으면 어드민 할 일에 "출발 전에 전화로 확인하세요"가 뜹니다.
+          기사가 헛걸음하는 일을 막으려고, 확인이 안 된 방문은 사람이 한 번 더 챙기게 했습니다.
+        </p>
+        <div class="fig-grid-4" style="grid-template-columns: repeat(2, minmax(0, 260px)); justify-content: center;">
+          <figure>
+            <a href="../assets/ride-care/06-booking-detail.png" target="_blank"><img src="../assets/ride-care/06-booking-detail.png" alt="예약 상세 — 확정 대기" loading="lazy" /></a>
+            <figcaption>확정 전 — 희망 일정만</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/17-booking-confirmed.png" target="_blank"><img src="../assets/ride-care/17-booking-confirmed.png" alt="예약 상세 — 예약 확정, 일정 확인 버튼" loading="lazy" /></a>
+            <figcaption>확정 후 — 고객이 일정을 확인</figcaption>
+          </figure>
+        </div>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-12-home-new-consult.png" target="_blank">
+            <img src="../assets/ride-care/admin-12-home-new-consult.png" alt="어드민 홈 — 새 1:1 상담 알림" loading="lazy" />
+          </a>
+          <figcaption>새 1:1 상담이 들어오면 오른쪽 아래에 알림이 뜬다</figcaption>
+        </figure>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-02-booking.png" target="_blank">
+            <img src="../assets/ride-care/admin-02-booking.png" alt="단건 예약 상세 — 방문 정보, 고객, 금액, 확정과 거절" loading="lazy" />
+          </a>
+          <figcaption>단건 예약 — 목록에서 고르면 방문, 고객, 금액이 한 화면에. 확정하면 고객에게 방문 시각 알림이 간다 (주소 · 연락처 · 금액 블러 처리)</figcaption>
+        </figure>
+        <p>
+          가격의 바탕이 되는 단가도 어드민에서 관리합니다. 지역 단가는 <strong>직접 넣은 값만 저장하고, 비어 있으면 상위 지역 값을 따르게</strong> 했습니다.
+          전국 값 하나만 바꿔도 따로 정하지 않은 지역이 모두 따라오고, 화면에는 어디서 물려받은 값인지 함께 보입니다.
+          원가가 없는 차종은 0원으로 계산하지 않고 가격에서 빼서, 원가 누락이 싼 가격으로 새어 나가지 않게 했습니다.
+        </p>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-04-region-cost.png" target="_blank">
+            <img src="../assets/ride-care/admin-04-region-cost.png" alt="지역 단가 — 상위 지역 값 상속" loading="lazy" />
+          </a>
+          <figcaption>단가 기준 · 지역 — 비어 있는 지역은 전국 값을 따른다 (단가 블러 처리)</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 4. 계정 ============ -->
+      <section>
+        <h2><span class="num">04</span>계정 — 한 사람은 한 계정</h2>
+        <p>
+          로그인은 카카오, 네이버, 애플, 아이디 중에 고를 수 있습니다. 그런데 정비 예약과 방문에는 연락처가 꼭 필요해서 본인인증을 필수로 받습니다.
+          그러다 보니 카카오로 가입했던 사람이 다른 날 애플로 들어와 본인인증을 하면, <strong>같은 사람이 계정 두 개</strong>를 갖게 되는 문제가 생겼습니다.
+        </p>
+        <div class="decision">
+          <div class="title">결정 — 같은 사람이 확인되면 어떻게 할 것인가</div>
+          <ol>
+            <li><span class="opt">A</span><div><strong>합칠지 고객에게 묻는다</strong> — 친절해 보이지만, 본인인증이 필수라 "합치지 않음"을 고르면 더 갈 수 있는 길이 없다</div></li>
+            <li class="chosen"><span class="opt">선택</span><div><strong>묻지 않고 먼저 가입한 계정에 합친 뒤 알린다</strong> — 로그인 수단만 옮겨 붙이고, 어느 수단으로 들어와도 같은 계정이 되게 한다</div></li>
+          </ol>
+          <p class="why">고를 수 없는 질문은 묻지 않기로 했습니다. 대신 합친 직후 무슨 일이 있었는지와, 연결된 로그인 수단을 어디서 볼 수 있는지 바로 알려 줍니다.</p>
+        </div>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/ride-care/10-verify.png" target="_blank"><img src="../assets/ride-care/10-verify.png" alt="본인인증 — 연락처가 필요한 이유" loading="lazy" /></a>
+            <figcaption>본인인증 — 왜 필요한지부터</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/11-account-merged.png" target="_blank"><img src="../assets/ride-care/11-account-merged.png" alt="기존 계정과 연결했습니다 안내" loading="lazy" /></a>
+            <figcaption>합친 뒤 알림</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/16-withdraw.png" target="_blank"><img src="../assets/ride-care/16-withdraw.png" alt="계정 관리 — 연결된 로그인 수단, 탈퇴 확인" loading="lazy" /></a>
+            <figcaption>로그인 수단 "카카오 · Apple" (이메일 블러 처리)</figcaption>
+          </figure>
+        </div>
+        <p>
+          합칠 때 가장 신경 쓴 건 <strong>조용히 사라지는 데이터</strong>였습니다. 회원에 붙어 있는 표마다 "통합할 때 옮길지"를 정해 문서로 남겼습니다.
+          예약, 상담, 내 차는 옮기고, 알림함, 푸시 토큰, 약관 동의는 옮기지 않습니다.
+        </p>
+        <h3>여러 기기에서 로그인</h3>
+        <p>
+          여러 기기에서 동시에 로그인할 수 있게 하되, 기기 하나를 세션 하나로 보고 수에 상한을 뒀습니다.
+          그리고 로그아웃, 모든 기기에서 로그아웃, 비밀번호 변경, 관리자 정지마다 <strong>어디까지 끊을지</strong>를 따로 정했습니다.
+        </p>
+      </section>
+
+      <!-- ============ 5. 탈퇴 ============ -->
+      <section>
+        <h2><span class="num">05</span>탈퇴 — 치우는 순서가 핵심</h2>
+        <p>
+          탈퇴는 버튼 하나지만 뒤에서는 외부 로그인 연결, 알림, 기기, 세션, 회원 정보를 차례로 지워야 합니다.
+          중간에 하나가 실패하면 반쯤 지워진 계정이 남습니다. 그래서 <strong>순서를 정하고 회원 정보는 맨 마지막에</strong> 지우게 했습니다.
+          도중에 실패해도 다시 누르면 남은 단계부터 이어서 진행됩니다.
+        </p>
+        <ul>
+          <li><strong>지워지는 것을 그대로 말한다</strong> — 확인창에 실명, 생년월일, 연락처와 연결된 로그인 수단, 받은 알림이 지워지고 되돌릴 수 없다고 적었다</li>
+          <li><strong>다시 가입할 수 있게</strong> — 처음엔 지운 표시만 남기는 방식이었는데, 같은 사람이 다시 가입하면 중복으로 막혔다. 로그인 수단은 실제로 지우는 쪽으로 바꿨다</li>
+          <li><strong>어드민에서도 찾을 수 없게</strong> — 탈퇴 이력에는 가입일, 탈퇴일, 이용 기간만 남고 이름과 연락처는 남지 않는다</li>
+        </ul>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-07-withdrawn.png" target="_blank">
+            <img src="../assets/ride-care/admin-07-withdrawn.png" alt="탈퇴 이력 — 이름과 연락처 없이 기간만" loading="lazy" />
+          </a>
+          <figcaption>어드민 탈퇴 이력 — "이름 · 연락처는 탈퇴 때 지워져 찾을 수 없어요"</figcaption>
+        </figure>
+      </section>
+
+      <!-- ============ 6. 알림 ============ -->
+      <section>
+        <h2><span class="num">06</span>알림 — 광고성은 아직 보낼 수 없게</h2>
+        <p>
+          예약 확정, 상담 답변, 점검 공지처럼 서비스에 필요한 알림은 서버가 상황마다 보내고, 운영 매니저도 어드민에서 직접 보낼 수 있습니다.
+          문제는 이벤트나 프로모션 같은 <strong>광고성 알림</strong>이었습니다.
+        </p>
+        <div class="decision">
+          <div class="title">결정 — 광고성 푸시를 지금 열 것인가</div>
+          <ol>
+            <li><span class="opt">A</span><div><strong>열어 두고 주의해서 쓴다</strong> — 정보통신망법상 광고성 알림은 마케팅 수신 동의자에게만 보낼 수 있는데, 당시 구조로는 동의자만 골라낼 방법이 없었다</div></li>
+            <li class="chosen"><span class="opt">선택</span><div><strong>서버가 거절한다</strong> — 어드민에서 광고성을 고를 수 없고, 요청이 와도 서버가 받지 않는다</div></li>
+          </ol>
+          <p class="why">사람이 조심하는 것에 기대지 않고 구조로 막았습니다. 나중에 열 때 함께 해야 할 것(동의자만 걸러 보내기, 야간 발송 금지, 제목에 "(광고)" 표기)도 미리 적어 두었습니다.</p>
+        </div>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-08-push.png" target="_blank">
+            <img src="../assets/ride-care/admin-08-push.png" alt="푸시 발송 — 공지성만 가능, 발송 이력" loading="lazy" />
+          </a>
+          <figcaption>어드민 푸시 발송 — 광고성은 비활성. 발송 결과에 성공 · 실패 기기 수와 정리된 무효 토큰 수가 남는다 (테스트 문구 · 보낸 사람 블러 처리)</figcaption>
+        </figure>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/ride-care/14-push-android.png" target="_blank"><img src="../assets/ride-care/14-push-android.png" alt="안드로이드 알림센터의 라이드 알림" loading="lazy" /></a>
+            <figcaption>받는 쪽 — 상담, 예약 확정, 공지</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/15-inbox.png" target="_blank"><img src="../assets/ride-care/15-inbox.png" alt="앱 알림함" loading="lazy" /></a>
+            <figcaption>앱 알림함</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/08-notification.png" target="_blank"><img src="../assets/ride-care/08-notification.png" alt="알림 설정 — 마케팅 정보 수신 동의" loading="lazy" /></a>
+            <figcaption>마케팅 수신 동의는 따로 받는다</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 7. 상담 ============ -->
+      <section>
+        <h2><span class="num">07</span>1:1 상담 — 자동 응답에서 상담사까지</h2>
+        <p>
+          자주 묻는 질문은 FAQ 버튼으로 바로 답하고, 그래도 해결이 안 되면 상담사를 연결합니다.
+          FAQ는 어드민에서 관리하고, 상담 가능 시간과 공휴일도 어드민에서 정합니다.
+        </p>
+        <div class="fig-grid">
+          <figure>
+            <a href="../assets/ride-care/admin-15-consult-chat.png" target="_blank"><img src="../assets/ride-care/admin-15-consult-chat.png" alt="어드민 1:1 상담 대화" loading="lazy" /></a>
+            <figcaption>어드민 — 상담 진행 중</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/admin-16-consult-warning.png" target="_blank"><img src="../assets/ride-care/admin-16-consult-warning.png" alt="욕설 · 비방 경고 확인창" loading="lazy" /></a>
+            <figcaption>욕설 · 비방 경고 남기기</figcaption>
+          </figure>
+        </div>
+        <ul>
+          <li><strong>답하려면 먼저 맡는다</strong> — 대기 중인 상담은 "맡기"를 눌러야 답할 수 있어서, 두 사람이 같은 고객에게 동시에 답하지 않는다</li>
+          <li><strong>답이 없으면 정리된다</strong> — 상담사가 답한 뒤 고객이 10분 동안 말이 없으면 종료되고, 종료 1분 전에 알림이 간다</li>
+          <li><strong>상담사도 보호한다</strong> — 상담 시작 때 욕설 · 비방 안내를 띄우고, 상담사는 경고를 남긴 뒤에도 계속되면 종료할 수 있다</li>
+        </ul>
+        <div class="fig-grid-3">
+          <figure>
+            <a href="../assets/ride-care/09-support.png" target="_blank"><img src="../assets/ride-care/09-support.png" alt="앱 고객센터 — FAQ 자동 응답" loading="lazy" /></a>
+            <figcaption>FAQ 자동 응답</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/12-support-connecting.png" target="_blank"><img src="../assets/ride-care/12-support-connecting.png" alt="상담사 연결 중" loading="lazy" /></a>
+            <figcaption>상담사 연결 중</figcaption>
+          </figure>
+          <figure>
+            <a href="../assets/ride-care/13-support-chat.png" target="_blank"><img src="../assets/ride-care/13-support-chat.png" alt="앱 상담 대화" loading="lazy" /></a>
+            <figcaption>상담사와 대화</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============ 8. 장애 ============ -->
+      <section>
+        <h2><span class="num">08</span>장애 — 로컬에서는 멀쩡했던 두 가지</h2>
+        <h3>본인인증이 전부 거절됐다</h3>
+        <p>
+          dev 환경에서 인증을 정상적으로 마쳐도 모두 실패로 돌아왔습니다. 인증사는 실패 코드만 줬고, 처음엔 인증사 쪽 문제로 보였습니다.
+          로그를 따라가 보니 원인은 <strong>우리 서버의 검증 코드</strong>였습니다. 응답 값 하나를 다른 값들처럼 복호화하고 있었는데,
+          하필 그 값이 복호화가 가능한 모양이라 오류 없이 엉뚱한 값이 나왔습니다. 테스트는 가짜 암호화가 값을 그대로 돌려주게 되어 있어서 모두 통과했습니다.
+          검증 방식을 고치고, 테스트의 가짜 암호화가 실제로 값을 바꾸게 해서 같은 실수가 다시 통과하지 못하게 했습니다.
+        </p>
+        <h3>"모든 기기에서 로그아웃"이 dev에서만 실패했다</h3>
+        <p>
+          로컬에서는 잘 되는데 dev 서버에서만 오류가 났습니다. dev는 저장소가 여러 대로 나뉜 구조라 한 번에 여러 키를 지우는 명령이 거부됐고,
+          로컬은 한 대짜리라 재현되지 않았습니다. 키를 하나씩 지우게 고쳤고, 키를 한곳에 모으는 다른 방법은
+          <strong>키 이름이 바뀌어 모든 사용자가 로그아웃되는 문제</strong>가 있어 고르지 않았습니다.
+        </p>
+        <div class="callout">
+          <div class="title">배운 것</div>
+          외부 서비스를 의심하기 전에 우리 로그부터 본다. 로컬과 운영 환경이 다른 부분은 테스트로 규칙을 못 박는다.
+        </div>
+      </section>
+
+      <!-- ============ 9. 일하는 방식 ============ -->
+      <section>
+        <h2><span class="num">09</span>일하는 방식 — 기록하고, 규칙으로 올린다</h2>
+        <p>
+          작업마다 무엇을 왜 했는지와 빠졌던 함정을 날짜별로 기록했습니다. 겪은 사고는 프로젝트 규칙 문서로 올려,
+          Claude Code와 사람이 같은 규칙을 보고 일하게 했습니다. 위의 두 장애도 이렇게 규칙이 되어 다음 작업부터 같은 실수를 막고 있습니다.
+        </p>
+        <div class="callout">
+          <div class="title">지금 상태</div>
+          출시에 필요한 기능은 거의 만들었고, dev 서버에서 실기기로 확인하는 중입니다. 운영 서버 개시와 앱스토어 · 플레이스토어 제출이 남았고,
+          결제와 구독 결제는 그 다음입니다. 화면 속 데이터는 테스트 데이터이며, 출시 후 실제 지표가 생기면 업데이트할 예정입니다.
+        </div>
+      </section>
+
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="back-link" href="../index.html">← 프로젝트 목록으로</a>
+      <div class="contact-row">
+        <a href="mailto:dnwlgn0807@naver.com">dnwlgn0807@naver.com</a>
+        <a href="https://github.com/uzyhu" target="_blank">github.com/uzyhu</a>
+      </div>
+      <p>© 2026 우지후</p>
+    </div>
+  </footer>
+
+</body>
+</html>

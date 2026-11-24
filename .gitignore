@@ -1,6 +1,11 @@
 # 원본 스크린샷 — 블러 처리 전 민감정보 포함, 절대 커밋 금지
 image (*.png
 스크린샷*.png
+IMG_*.PNG
+IMG_*.png
+
+# 진행 중인 회사 프로젝트 메모 — 내부 정보 포함
+NOW-*.md
 
 # 이력서·PDF 포트폴리오 — 전화번호 포함, 공개 저장소에 올리지 않음
 resume.html
@@ -11,3 +16,9 @@ portfolio-print.html
 *.pdf
 
 .DS_Store
+IMG_*.JPG
+*.JPG
+*.jpg
+image*.png
+*.jpeg
+*.JPEG
