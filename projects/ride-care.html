@@ -133,16 +133,21 @@
           방문 전날까지 고객이 확인하지 않으면 어드민 할 일에 "출발 전에 전화로 확인하세요"가 뜹니다.
           기사가 헛걸음하는 일을 막으려고, 확인이 안 된 방문은 사람이 한 번 더 챙기게 했습니다.
         </p>
-        <div class="fig-grid-4" style="grid-template-columns: repeat(2, minmax(0, 260px)); justify-content: center;">
+        <div class="fig-grid-4" style="grid-template-columns: repeat(3, minmax(0, 240px)); justify-content: center;">
           <figure>
-            <a href="../assets/ride-care/06-booking-detail.png" target="_blank"><img src="../assets/ride-care/06-booking-detail.png" alt="예약 상세 — 확정 대기" loading="lazy" /></a>
+            <a href="../assets/ride-care/06-booking-detail.png" target="_blank"><img src="../assets/ride-care/06-booking-detail.png" alt="예약 상세 — 확정 대기, 희망 일정과 결제 정보" loading="lazy" /></a>
             <figcaption>확정 전 — 희망 일정만</figcaption>
           </figure>
           <figure>
             <a href="../assets/ride-care/17-booking-confirmed.png" target="_blank"><img src="../assets/ride-care/17-booking-confirmed.png" alt="예약 상세 — 예약 확정, 일정 확인 버튼" loading="lazy" /></a>
             <figcaption>확정 후 — 고객이 일정을 확인</figcaption>
           </figure>
+          <figure>
+            <a href="../assets/ride-care/18-booking-canceled.png" target="_blank"><img src="../assets/ride-care/18-booking-canceled.png" alt="예약 상세 — 취소된 예약" loading="lazy" /></a>
+            <figcaption>취소 — 상태가 카드 색으로 바로 보인다</figcaption>
+          </figure>
         </div>
+        <p style="text-align:center; font-size:14px; color: var(--ink-faint); margin-top:-20px;">주소 · 금액 블러 처리</p>
         <figure class="breakout">
           <a href="../assets/ride-care/admin-12-home-new-consult.png" target="_blank">
             <img src="../assets/ride-care/admin-12-home-new-consult.png" alt="어드민 홈 — 새 1:1 상담 알림" loading="lazy" />
@@ -153,7 +158,13 @@
           <a href="../assets/ride-care/admin-02-booking.png" target="_blank">
             <img src="../assets/ride-care/admin-02-booking.png" alt="단건 예약 상세 — 방문 정보, 고객, 금액, 확정과 거절" loading="lazy" />
           </a>
-          <figcaption>단건 예약 — 목록에서 고르면 방문, 고객, 금액이 한 화면에. 확정하면 고객에게 방문 시각 알림이 간다 (주소 · 연락처 · 금액 블러 처리)</figcaption>
+          <figcaption>단건 예약 — 목록에서 고르면 방문, 고객, 금액이 위 카드 세 장에 모인다. 확정하면 고객에게 방문 시각 알림이 간다 (주소 · 연락처 · 금액 블러 처리)</figcaption>
+        </figure>
+        <figure class="breakout">
+          <a href="../assets/ride-care/admin-18-booking-done.png" target="_blank">
+            <img src="../assets/ride-care/admin-18-booking-done.png" alt="완료된 단건 예약 — 정비 기록, 담당자, 확정·완료 시각" loading="lazy" />
+          </a>
+          <figcaption>완료된 예약 — 담당자와 확정·완료 시각이 남고, 맨 위에서 기사 화면의 정비 기록으로 이어진다 (주소 · 연락처 · 금액 블러 처리)</figcaption>
         </figure>
         <p>
           가격의 바탕이 되는 단가도 어드민에서 관리합니다. 지역 단가는 <strong>직접 넣은 값만 저장하고, 비어 있으면 상위 지역 값을 따르게</strong> 했습니다.
